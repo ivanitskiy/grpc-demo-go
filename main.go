@@ -16,6 +16,7 @@ var (
 )
 
 type userServiceServer struct {
+	//  by defult unimplemented rpc
 	extUser.UnimplementedUserServiceServer
 }
 
