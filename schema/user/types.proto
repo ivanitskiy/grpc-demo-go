@@ -6,7 +6,7 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 import "validate/validate.proto";
 
-option go_package = "github.com/ivanitskiy/grpc-workshop/gpbgen/schema/user";
+option go_package = "github.com/ivanitskiy/grpc-workshop/pbgen/schema/user";
 
 service UserService {
   rpc CreateUser(UserProfile) returns (google.protobuf.Empty) {

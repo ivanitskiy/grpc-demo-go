@@ -1,5 +1,6 @@
 .PHONY: all proto clean
 
+PROJECT_NAME			?= grpc-workshop
 OUT_DIR			   		?= target
 PBGEN					 = pbgen
 GEN					 	 = gen
@@ -8,6 +9,7 @@ SCHEMAS					 = schema
 GOOGLEAPIS_PATH	   		?= $(GOPATH)/src/github.com/googleapis/googleapis
 PROTOC_GEN_VALIDATE   	?= $(GOPATH)/src/github.com/bufbuild/protoc-gen-validate
 PROTO_FILES				 = $$(find $(SCHEMAS) -maxdepth 4 -type f -name '*.proto')
+MAIN				 	 = main.go
 
 debug:
 	@echo "OUT_DIR: $(OUT_DIR)"
@@ -42,7 +44,7 @@ proto: ## Compile proto
 		$(PROTO_FILES)
 
 build: ## build service
-	$(ECHO) mkdir -p $(OUT_DIR)
-	$(ECHO) CGO_ENABLED=0 GO111MODULE=$(GO111MODULE) go build  \
-		-o $(OUT_DIR)/$(CI_PROJECT_NAME) \
-		-v -ldflags=$(GOLDFLAGS) $(MAIN)
+	@mkdir -p $(OUT_DIR)
+	$(ECHO) CGO_ENABLED=0 go build  \
+		-o $(OUT_DIR)/$(PROJECT_NAME) \
+		-v  $(MAIN)
