@@ -29,6 +29,7 @@ clean:  ## Clean worspace
 	@rm -fr $(GEN)
 	@rm -fr $(PBGEN)
 	@rm -fr $(OPENAPI_GEN)
+	@rm -fr $(OUT_DIR)
 
 proto: ## Compile using protoc
 	@mkdir -p $(PBGEN)
@@ -53,7 +54,7 @@ proto: ## Compile using protoc
 buf-generate: ## Compile using bug generate
 	buf generate
 
-build:  ## Build service
+build:  clean buf-generate ## Build service
 	@mkdir -p $(OUT_DIR)
 	$(ECHO) CGO_ENABLED=0 go build  \
 		-o $(OUT_DIR)/$(PROJECT_NAME) \
