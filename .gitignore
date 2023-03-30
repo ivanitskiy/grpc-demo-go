@@ -1,4 +1,7 @@
+# generated cpde
 gen/
 pbgen/
+gwgen/
+
 .DS_Store
 target/

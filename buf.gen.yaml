@@ -12,3 +12,13 @@ plugins:
     out: pbgen
     opt:
       - paths=source_relative
+  - plugin: openapiv2
+    out: gen/openapiv2
+    opt:
+      - logtostderr=true
+  - plugin: grpc-gateway
+    out: gwgen
+    opt:
+      - logtostderr=true
+      - paths=source_relative
+      - standalone=true
