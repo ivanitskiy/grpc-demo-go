@@ -4,6 +4,10 @@ package ivanitskiy.grpc_workshop.schema.user;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "google/api/field_behavior.proto";
+
 import "validate/validate.proto";
 
 option go_package = "github.com/ivanitskiy/grpc-workshop/pbgen/schema/user";
@@ -74,4 +78,54 @@ enum UserType {
   // x-displayName: "Debug"
   // Power user
   POWER = 2;
+}
+
+service BookService {
+  rpc CreateBook(CreateBookRequest) returns (Book) {
+    option (google.api.http) = {
+      post : "/v1/books"
+      body : "book"
+    };
+  }
+
+  // Update a book.
+  rpc UpdateBook(UpdateBookRequest) returns (Book) {
+    option (google.api.http) = {
+      put : "/v1/books/{book.id}"
+      body : "book"
+    };
+  }
+
+  rpc GetBook(IdMessage) returns (Book) {
+    option (google.api.http) = {
+      get : "/v1/books/{id}"
+    };
+  }
+
+  rpc DeleteBook(IdMessage) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/books/{id}"
+    };
+  }
+}
+
+message IdMessage {
+  string id = 1;
+}
+
+message Book {
+  string name = 1;
+  string id = 2;
+  google.protobuf.Timestamp create_time = 3;
+  string publisher = 4;
+}
+
+message CreateBookRequest {
+  Book book = 2;
+}
+
+message UpdateBookRequest {
+  Book book = 1 [ (google.api.field_behavior) = REQUIRED ];
+  google.protobuf.FieldMask update_mask = 2;
+  bool allow_missing = 3;
 }
