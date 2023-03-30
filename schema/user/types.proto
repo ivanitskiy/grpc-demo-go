@@ -3,15 +3,16 @@ syntax = "proto3";
 package ivanitskiy.grpc_workshop.schema.user;
 
 import "google/api/annotations.proto";
-// import "google/protobuf/empty.proto";
+import "google/protobuf/empty.proto";
+import "validate/validate.proto";
 
 option go_package = "github.com/ivanitskiy/grpc-workshop/gpbgen/schema/user";
 
 service UserService {
-  rpc CreateUser(UserProfile) returns (UserProfile) {
+  rpc CreateUser(UserProfile) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      post: "/v1/users"
-      body: "*"
+      post : "/v1/users"
+      body : "*"
     };
   }
 }
@@ -52,7 +53,7 @@ message UserProfile {
   // x-displayName: "Email"
   // x-example: "value"
   // user's email
-  string email = 5;
+  string email = 5 [ (validate.rules).string.email = true ];
 }
 
 // UserType
