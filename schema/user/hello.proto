@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package ivanitskiy.grpc_workshop.schema.user;
+
+import "google/api/annotations.proto";
+// import "google/protobuf/empty.proto";
+
+option go_package = "github.com/ivanitskiy/grpc-workshop/gpbgen/schema/user";
+
+service UserService {
+  rpc CreateUser(UserProfile) returns (UserProfile) {
+    option (google.api.http) = {
+      post: "/v1/users"
+      body: "*"
+    };
+  }
+}
+
+// UserProfile
+//
+// x-displayName: "User Profile message"
+message UserProfile {
+  // type
+  //
+  // x-displayName: "Type"
+  // type of the user
+  UserType type = 1;
+
+  // locale
+  //
+  // x-displayName: "Locale"
+  // x-example: "value"
+  // locale of the user (defaults to English)
+  string locale = 2;
+
+  // first_name
+  //
+  // x-displayName: "First Name"
+  // x-example: "value"
+  // user's first name
+  string first_name = 3;
+
+  // last_name
+  //
+  // x-displayName: "Last Name"
+  // x-example: "value"
+  // user's last name
+  string last_name = 4;
+
+  // email
+  //
+  // x-displayName: "Email"
+  // x-example: "value"
+  // user's email
+  string email = 5;
+}
+
+// UserType
+//
+// x-displayName: "User Type"
+// UserType is to identify the type of user
+enum UserType {
+  // User
+  // x-displayName: "User"
+  // Regular User
+  USER = 0;
+  // Service User
+  // x-displayName: "Service User"
+  // User for accessing only APIs/services
+  SERVICE = 1;
+
+  // Debug
+  // x-displayName: "Debug"
+  // Power user
+  POWER = 2;
+}
