@@ -1,0 +1,14 @@
+version: v1
+plugins:
+  - plugin: go
+    out: pbgen
+    opt:
+      - paths=source_relative
+  - plugin: go-grpc
+    out: pbgen
+    opt:
+      - paths=source_relative
+  - plugin: buf.build/bufbuild/validate-go
+    out: pbgen
+    opt:
+      - paths=source_relative
