@@ -12,7 +12,7 @@ import (
 
 var (
 	addr    = flag.String("addr", ":9090", "endpoint of the gRPC service")
-	network = flag.String("network", "tcp", "a valid network type which is consistent to -addr")
+	network = flag.String("network", "tcp", "a valid network type (tcp, tcp4, tcp6, unix or unixpacket) which is consistent to -addr")
 )
 
 type userServiceServer struct {
