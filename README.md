@@ -15,3 +15,10 @@ Reference links:
  - [grpc.io](https://grpc.io/)
  - [a_bit_of_everything.proto](https://github.com/grpc-ecosystem/grpc-gateway/blob/main/examples/internal/proto/examplepb/a_bit_of_everything.proto) - a complete proto example
 
+
+
+A good way to add dependencies via `git submodule`:
+
+    git submodule add https://github.com/googleapis/googleapis
+    git submodule add https://github.com/bufbuild/protoc-gen-validate
+    git submodule update --remote
