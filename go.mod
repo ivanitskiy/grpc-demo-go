@@ -1,4 +1,4 @@
-module github.com/ivanitskiy/grpc-workshop
+module github.com/ivanitskiy/grpc-demo-go
 
 go 1.20
 

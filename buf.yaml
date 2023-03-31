@@ -1,5 +1,5 @@
 version: v1
-name: buf.build/ivanitskiy/grpc-workshop
+name: buf.build/ivanitskiy/grpc-demo-go
 breaking:
   use:
     - FILE

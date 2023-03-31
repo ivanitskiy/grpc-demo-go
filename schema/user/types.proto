@@ -10,7 +10,7 @@ import "google/api/field_behavior.proto";
 
 import "validate/validate.proto";
 
-option go_package = "github.com/ivanitskiy/grpc-workshop/pbgen/schema/user";
+option go_package = "github.com/ivanitskiy/grpc-demo-go/pbgen/schema/user";
 
 service UserService {
   rpc CreateUser(UserProfile) returns (google.protobuf.Empty) {

@@ -1,6 +1,6 @@
 .PHONY: all proto clean generate build
 
-PROJECT_NAME			?= grpc-workshop
+PROJECT_NAME			?= grpc-demo-go
 OUT_DIR			   		?= target
 PBGEN					 = pbgen
 GWGEN					 = gwgen

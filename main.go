@@ -6,7 +6,7 @@ import (
 	"net"
 
 	"github.com/golang/glog"
-	extUser "github.com/ivanitskiy/grpc-workshop/pbgen/schema/user"
+	extUser "github.com/ivanitskiy/grpc-demo-go/pbgen/schema/user"
 	"google.golang.org/grpc"
 )
 
